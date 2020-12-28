@@ -161,6 +161,23 @@ public class RepositoryManager {
 	}
 	
 	/**
+	 * Checks whether the Data file exists in the repository
+	 * If it does not, then a Data file is created in the repository
+	 */
+	public static void checkDataFile() {
+		if (!DATA_FILE.exists()) {
+			try {
+				FileWriter fileWriter = new FileWriter(DATA_FILE, true);
+				fileWriter.write("");
+				fileWriter.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
 	 * Deletes the image file from the repository
 	 * @param imageFileToDelete - The image file to delete
 	 */

@@ -20,6 +20,7 @@ public class ApplicationLoader {
 		
 		// Initialize classes
 		progressBarView.setStatus("Loading data");
+		RepositoryManager.checkDataFile();
 		DataRecord.DataRecord(); // Create first (singleton) instance
 		progressBarView.changeIntervals(DataRecord.DataRecord().getImageModelList().size() + 2);
 		
