@@ -137,10 +137,13 @@ public class AddImagePanelView extends JPanel {
 		return textDescription.getText();
 	}
 
-	// Displays a preview of the image chosen
-	public void showImage(File file) {
+	/**
+	 * Displays a preview of the image chosen
+	 * @param ImageFile - Image file to preview
+	 */
+	public void showImage(File ImageFile) {
 		try {
-			Image img = ImageIO.read(file);
+			Image img = ImageIO.read(ImageFile);
 			
 			ImageIcon imgIcon = new ImageIcon(img.getScaledInstance(300, 300, Image.SCALE_DEFAULT));
 			

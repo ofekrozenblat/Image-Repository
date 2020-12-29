@@ -18,7 +18,8 @@ import javax.imageio.ImageIO;
 
 public class RepositoryManager {
 	
-	private static final File DATA_FILE = new File("Repository/Data.txt");
+	private static final String DIR_PATH = System.getProperty("user.home") + "\\Desktop\\Repository";
+	private static final File DATA_FILE = new File(DIR_PATH + "\\Data.txt");
 	
 	// Delimiters
 	private static final String DELIMITER = "\\----------------\\"; // Separates whole sections
@@ -55,7 +56,6 @@ public class RepositoryManager {
 			try {
 				data = Files.readAllLines(DATA_FILE.toPath());
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -71,7 +71,6 @@ public class RepositoryManager {
 					// delete delimiter as well
 					if (data.get(i).equals(DELIMITER))
 						data.remove(i);
-					
 				}
 			}
 			
@@ -132,7 +131,7 @@ public class RepositoryManager {
 	 * @return copied file in repository.
 	 */
 	public static File copyImageFileToRepository(File imageFileToCopy) {
-		String targetLocation = "Repository/" + imageFileToCopy.getName();
+		String targetLocation = DIR_PATH + "\\" + imageFileToCopy.getName();
 		Path targetPath = Paths.get(targetLocation);
 		
 		try {
@@ -165,6 +164,13 @@ public class RepositoryManager {
 	 * If it does not, then a Data file is created in the repository.
 	 */
 	public static void checkDataFile() {
+		// Check if the Repository folder is made, if not create it
+		File dir = new File(DIR_PATH);
+		if (!dir.exists()) {
+			dir.mkdir();
+		}
+		
+		// Check if the Data file exists in the Repository folder, it not create it
 		if (!DATA_FILE.exists()) {
 			try {
 				FileWriter fileWriter = new FileWriter(DATA_FILE, true);
@@ -219,7 +225,7 @@ public class RepositoryManager {
 				lastDelimiterIndex = i;
 			}
 		}
-		File imageFile = new File("Repository/" + fileName);
+		File imageFile = new File(DIR_PATH + "\\" + fileName);
 		
 		return new ImageModel(imageFile, imageDescription, imageDateCreated);
 	}
