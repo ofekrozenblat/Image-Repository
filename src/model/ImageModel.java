@@ -63,4 +63,10 @@ public class ImageModel {
 	public boolean isSelected() {
 		return imagePanelView.isSelected();
 	}
+	
+	public void setSelectedFalse() {
+		if (isSelected()) {
+			imagePanelView.toggleSelected();
+		}
+	}
 }

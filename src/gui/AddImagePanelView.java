@@ -47,7 +47,7 @@ public class AddImagePanelView extends JPanel {
 		labelChooseImage.setAlignmentX(LEFT_ALIGNMENT);
 		add(labelChooseImage);
 		
-		buttonBrowserImage = new JButton("Browser Image");
+		buttonBrowserImage = new JButton("Upload image");
 		buttonBrowserImage.setPreferredSize(new Dimension(300, 25));
 		buttonBrowserImage.setFont(ViewStandards.labelMediumFont());
 		add(buttonBrowserImage);
@@ -125,6 +125,7 @@ public class AddImagePanelView extends JPanel {
 	public void clearFields() {
 		imageFile = null;
 		labelImageView.setIcon(null);
+		labelFileName.setText("File name:");
 		textDescription.setText("");
 	}
 	

@@ -105,6 +105,15 @@ public class ImagePanelView extends JPanel{
 		}
 	}
 	
+	public void toggleSelected() {
+		selected = !selected;
+		if (selected) {
+			setBorder(BorderFactory.createLineBorder(Color.BLUE, 4));
+		}else {
+			setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		}
+	}
+	
 	private void createClickEvent() {
 		mouseListener = new MouseListener() {
 			
@@ -134,12 +143,7 @@ public class ImagePanelView extends JPanel{
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				selected = !selected;
-				if (selected) {
-					setBorder(BorderFactory.createLineBorder(Color.BLUE, 4));
-				}else {
-					setBorder(BorderFactory.createLineBorder(Color.BLACK));
-				}
+				toggleSelected();
 			}
 		};
 		

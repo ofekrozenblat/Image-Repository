@@ -15,6 +15,9 @@ public class ApplicationLoader {
 		new ApplicationLoader();
 	}
 	
+	/**
+	 * Starts up the application, loading any necessary resources.
+	 */
 	public ApplicationLoader() {
 		ProgressBarView progressBarView = new ProgressBarView(2);
 		
@@ -40,7 +43,10 @@ public class ApplicationLoader {
 		window.frame.setVisible(true);
 	}
 	
-	
+	/**
+	 * Loads the images on application start up.
+	 * @param progressBarView - Progress bar to show progress.
+	 */
 	private void loadImages(ProgressBarView progressBarView) {
 		for (ImageModel imageModel : DataRecord.DataRecord().getImageModelList()) {
 			Image img = RepositoryManager.loadImage(imageModel.getImageFile());

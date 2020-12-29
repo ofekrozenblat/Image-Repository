@@ -44,18 +44,32 @@ public class ProgressBarView extends JFrame {
 		setVisible(true);
 	}
 	
+	/**
+	 * Change the number of intervals.
+	 * @param intervals - Number of intervals.
+	 */
 	public void changeIntervals(int intervals) {
 		this.intervals = intervals;
 	}
 	
+	/**
+	 * Sets the status of the progress bar
+	 * @param status - String to show as status
+	 */
 	public void setStatus(String status) {
 		labelStatus.setText(status);
 	}
 	
+	/**
+	 * Progresses the progress bar by (maximum value/number of intervals). By default maximum value is fixed to 100.
+	 */
 	public void progress() {
 		progressBar.setValue(progressBar.getValue() + maximumValue/intervals);
 	}
 	
+	/**
+	 * Sets the progress bar value to maximum value and hides the progress bar.
+	 */
 	public void finish() {
 		progressBar.setValue(maximumValue);
 		setStatus("Finished loading");

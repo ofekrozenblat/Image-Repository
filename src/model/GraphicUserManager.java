@@ -55,21 +55,51 @@ public class GraphicUserManager {
 		imagePanelListView.buttonDeleteImage.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Keeps track of which image models to remove
+				// Keeps track of which image models to remove (only selected ones)
 				// (Avoid Concurrent modification as can not remove the image models
 				// from the panel list during the first for loop)
-				
 				List<ImageModel> imageModelsToRemove = new LinkedList<ImageModel>();
 				for (ImageModel imageModel : imagePanelListView.getImageModelList()) {
 					if (imageModel.isSelected()) {
-						dataRecord.delete(imageModel);
 						imageModelsToRemove.add(imageModel);
 					}
 				}
 				
-				for (ImageModel imageModel : imageModelsToRemove) {
-					imagePanelListView.removeImageModel(imageModel);
+				// Informative message to user if attempts to delete with no images selected
+				if (imageModelsToRemove.size() == 0) {
+					JOptionPane.showMessageDialog(addImagePanelView, "No images selected for deletion", 
+							"Image Repository", JOptionPane.INFORMATION_MESSAGE);
+					return;
 				}
+				
+				// Confirm the user wants to delete the images
+				String message;
+				if (imageModelsToRemove.size() == 1) {
+					message = "Are you sure you want to delete the following image:\n";
+				}else {
+					message = "Are you sure you want to delete the following " + 
+							imageModelsToRemove.size() + " images:\n";
+				}
+				
+				for (ImageModel imageModel : imageModelsToRemove) {
+					message += imageModel.getImageName() + "\n";
+				}
+				
+				int returnVal = JOptionPane.showConfirmDialog(addImagePanelView, message, 
+							"Image Repository", JOptionPane.YES_NO_OPTION);
+				
+				if (returnVal == JOptionPane.OK_OPTION) {
+					for (ImageModel imageModel : imageModelsToRemove) {
+						imagePanelListView.removeImageModel(imageModel);
+						dataRecord.delete(imageModel);
+					}
+				}else {
+					// Unselect the images if user does not want to delete
+					for (ImageModel imageModel : imageModelsToRemove) {
+						imageModel.setSelectedFalse();
+					}
+				}
+				
 			}
 		});
 		

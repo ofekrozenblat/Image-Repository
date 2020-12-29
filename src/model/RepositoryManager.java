@@ -25,8 +25,8 @@ public class RepositoryManager {
 	private static final String INTERNAL_DELIMITER = "<p>"; // Separates parts of a single section
 	
 	/**
-	 * Writes the given image model reference to the Data file
-	 * @param imageModel  - Image model to write
+	 * Writes the given image model reference to the Data file.
+	 * @param imageModel  - Image model to write.
 	 */
 	public static void write(ImageModel imageModel) {
 		try {
@@ -46,8 +46,8 @@ public class RepositoryManager {
 	}
 	
 	/**
-	 * Deletes the given image model reference from the Data file
-	 * @param imageModel - Image model to delete
+	 * Deletes the given image model reference from the Data file.
+	 * @param imageModel - Image model to delete.
 	 */
 	public static void delete(ImageModel imageModel) {
 			List<String> data = new LinkedList<String>();
@@ -92,8 +92,8 @@ public class RepositoryManager {
 	}
 	
 	/**
-	 * Reads the data file and creates image models
-	 * @return List of ImageModels created from the Data file
+	 * Reads the data file and creates corresponding image models.
+	 * @return List of image models created from the Data file.
 	 */
 	public static List<ImageModel> read(){
 		List<String> data = new LinkedList<String>();
@@ -127,9 +127,9 @@ public class RepositoryManager {
 	}
 	
 	/**
-	 * Copies the given image file to repository and returns copied file
-	 * @param imageFile - The image file to copy
-	 * @return copied file in repository
+	 * Copies the given image file to repository and returns copied file.
+	 * @param imageFileToCopy - The image file to copy.
+	 * @return copied file in repository.
 	 */
 	public static File copyImageFileToRepository(File imageFileToCopy) {
 		String targetLocation = "Repository/" + imageFileToCopy.getName();
@@ -145,9 +145,9 @@ public class RepositoryManager {
 	}
 	
 	/**
-	 * Loads image file from repository
-	 * @param imageFile - Image file to load
-	 * @return image that was loaded
+	 * Loads image file from repository.
+	 * @param imageFile - Image file to load.
+	 * @return image that was loaded if image file exists, null otherwise.
 	 */
 	public static Image loadImage(File imageFile) {
 		Image image = null;
@@ -161,8 +161,8 @@ public class RepositoryManager {
 	}
 	
 	/**
-	 * Checks whether the Data file exists in the repository
-	 * If it does not, then a Data file is created in the repository
+	 * Checks whether the Data file exists in the repository.
+	 * If it does not, then a Data file is created in the repository.
 	 */
 	public static void checkDataFile() {
 		if (!DATA_FILE.exists()) {
@@ -178,13 +178,18 @@ public class RepositoryManager {
 	}
 	
 	/**
-	 * Deletes the image file from the repository
-	 * @param imageFileToDelete - The image file to delete
+	 * Deletes the image file from the repository.
+	 * @param imageFileToDelete - The image file to delete.
 	 */
 	private static void deleteImageFile(File imageFileToDelete) {
 		imageFileToDelete.delete();
 	}
 	
+	/**
+	 * Given a section of text from the Data file, creates and returns a corresponding image model.
+	 * @param sectionData - Text data.
+	 * @return image model containing the corresponding data.
+	 */
 	private static ImageModel retreiveImageModel(List<String> sectionData) {
 		String fileName = new String();
 		String imageDescription = new String();
@@ -219,6 +224,9 @@ public class RepositoryManager {
 		return new ImageModel(imageFile, imageDescription, imageDateCreated);
 	}
 	
+	/**
+	 * Clears the Data file.
+	 */
 	private static void clear() {
 		// Clear the data file
 		try {

@@ -7,6 +7,10 @@ public class CalendarManager {
 			"September", "October", "November", "December"};
 	private static final String[] AM_PM = {"AM", "PM"};
 	
+	/**
+	 * Returns a string corresponding to the current date using default time zone.
+	 * @return String "YEAR, MONTH DAY_OF_MONTH, HOUR:MINUTE:SECOND AM/PM"
+	 */
 	public static String getDate() {
 		Calendar c = Calendar.getInstance();
 		
