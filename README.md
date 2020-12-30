@@ -1,6 +1,9 @@
 # Image Repository
 A simple local image repository. A folder on desktop will be made to store the data and images.
 
+## How to run the application
+Run the `Image Repository` jar file
+
 ## Usage
 #### To add an image:
 Select `Manage Repository` -> `Add image`\
