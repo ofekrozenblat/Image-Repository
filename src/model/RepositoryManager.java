@@ -18,7 +18,7 @@ import javax.imageio.ImageIO;
 
 public class RepositoryManager {
 	
-	private static final String DIR_PATH = System.getProperty("user.home") + "\\Desktop\\Repository";
+	private static final String DIR_PATH = System.getProperty("user.home") + "\\Desktop\\Image Repository";
 	private static final File DATA_FILE = new File(DIR_PATH + "\\Data.txt");
 	
 	// Delimiters
