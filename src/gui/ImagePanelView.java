@@ -19,8 +19,10 @@ public class ImagePanelView extends JPanel{
 	// Views
 	private JLabel labelImage;
 	private JLabel labelImageName;
-	private JTextArea labelImageDescription;
+	private JLabel labelImageDescription;
+	private JTextArea textAreaImageDescription;
 	private JLabel labelDateUploaded;
+	private JScrollPane scrollPaneTextDescription;
 	
 	// Attributes
 	private final ImageModel imageModel;
@@ -66,15 +68,29 @@ public class ImagePanelView extends JPanel{
 		labelDateUploaded.setAlignmentX(LEFT_ALIGNMENT);
 		add(labelDateUploaded);
 		
-		labelImageDescription = new JTextArea("Description: " + imageModel.getImageDescription());
+		labelImageDescription = new JLabel("Description:");
 		labelImageDescription.setFont(ViewStandards.labelSmallFont());
-		labelImageDescription.setLineWrap(true);
-		labelImageDescription.setOpaque(false);
-		labelImageDescription.setEditable(false);
-		labelImageDescription.setWrapStyleWord(true);
-		labelImageDescription.setForeground(new Color(51, 51, 51));
 		labelImageDescription.setAlignmentX(LEFT_ALIGNMENT);
 		add(labelImageDescription);
+		
+		scrollPaneTextDescription = new JScrollPane();
+		scrollPaneTextDescription.setBorder(BorderFactory.createEmptyBorder());
+		scrollPaneTextDescription.setOpaque(false);
+		scrollPaneTextDescription.setAlignmentX(LEFT_ALIGNMENT);
+		scrollPaneTextDescription.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		
+		textAreaImageDescription = new JTextArea(imageModel.getImageDescription());
+		textAreaImageDescription.setFont(ViewStandards.labelSmallFont());
+		textAreaImageDescription.setLineWrap(true);
+		textAreaImageDescription.setOpaque(false);
+		textAreaImageDescription.setEditable(false);
+		textAreaImageDescription.setWrapStyleWord(true);
+		textAreaImageDescription.setForeground(new Color(51, 51, 51));
+		textAreaImageDescription.setAlignmentX(LEFT_ALIGNMENT);
+		textAreaImageDescription.addMouseListener(mouseListener);
+		scrollPaneTextDescription.setViewportView(textAreaImageDescription);
+		scrollPaneTextDescription.getViewport().setOpaque(false);
+		add(scrollPaneTextDescription);
 	}
 	
 	/**

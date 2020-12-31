@@ -19,11 +19,12 @@ public class AddImagePanelView extends JPanel {
 	private JLabel labelImageView;
 	private JLabel labelFileName;
 	private JLabel labelDescription;
-	private JTextArea textDescription;
+	private JScrollPane scrollPaneTextDescription;
 	
 	// Public Views
 	public JButton buttonAddImage;
 	public JButton buttonBrowserImage;
+	public JTextArea textDescription;
 	
 	// Attributes
 	private JFileChooser fc;
@@ -62,13 +63,19 @@ public class AddImagePanelView extends JPanel {
 		labelDescription.setFont(ViewStandards.labelMediumFont());
 		add(labelDescription);
 		
+		scrollPaneTextDescription = new JScrollPane();
+		scrollPaneTextDescription.setBounds(0, 0, 300, 300);
+		scrollPaneTextDescription.setMaximumSize(new Dimension(300, 200));
+		scrollPaneTextDescription.setAlignmentX(LEFT_ALIGNMENT);
+		scrollPaneTextDescription.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		
 		textDescription = new JTextArea();
+		textDescription.setWrapStyleWord(true);
 		textDescription.setLineWrap(true);
-		textDescription.setPreferredSize(new Dimension(300, 200));
-		textDescription.setMaximumSize(new Dimension(300, 200));
 		textDescription.setFont(ViewStandards.labelMediumFont());
 		textDescription.setAlignmentX(LEFT_ALIGNMENT);
-		add(textDescription);
+		scrollPaneTextDescription.setViewportView(textDescription);
+		add(scrollPaneTextDescription);
 		
 		labelImageView = new JLabel();
 		labelImageView.setMaximumSize(new Dimension(300, 300));

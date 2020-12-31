@@ -78,7 +78,9 @@ public class ImagePanelListView extends JPanel{
 	}
 	
 	public void addImageModel(ImageModel imgModel) {
-		imageModelList.add(imgModel);
+		if (!imageModelList.contains(imgModel)) {
+			imageModelList.add(imgModel);
+		}
 		
 		// Add space before
 		viewPanel.add(Box.createRigidArea(new Dimension(5, 0)));
@@ -92,7 +94,13 @@ public class ImagePanelListView extends JPanel{
 	
 	public void removeImageModel(ImageModel imgModel) {
 		imageModelList.remove(imgModel);
-		viewPanel.remove(imgModel.getImagePanelView());
+		// Need to remove everything because rigid areas need to be removed as well (no direct reference to them)
+		viewPanel.removeAll();
+		
+		for (ImageModel imageModel : imageModelList) {
+			addImageModel(imageModel);
+		}
+		
 		updateView();
 	}
 	
