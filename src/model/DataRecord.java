@@ -1,13 +1,7 @@
 package model;
 
-import java.awt.Image;
 import java.io.File;
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.LinkedList;
 import java.util.List;
-
-import javax.imageio.ImageIO;
 
 public class DataRecord {
 	

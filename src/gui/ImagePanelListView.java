@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.Dimension;
-import java.awt.Font;
 import java.util.LinkedList;
 import java.util.List;
 
