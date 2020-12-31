@@ -62,6 +62,7 @@ public class AddImagePanelView extends JPanel {
 		scrollPaneTextDescription = new JScrollPane();
 		scrollPaneTextDescription.setBounds(0, 0, 300, 300);
 		scrollPaneTextDescription.setMaximumSize(new Dimension(300, 200));
+		scrollPaneTextDescription.setPreferredSize(scrollPaneTextDescription.getMaximumSize());
 		scrollPaneTextDescription.setAlignmentX(LEFT_ALIGNMENT);
 		scrollPaneTextDescription.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		
