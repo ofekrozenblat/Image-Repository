@@ -3,7 +3,7 @@ package model;
 import java.util.Calendar;
 
 public class CalendarManager {
-	private static final String[] MONTH_NAMES = {"Janurary", "Feburary", "March", "April", "May", "June", "July", "August", 
+	private static final String[] MONTH_NAMES = {"January", "February", "March", "April", "May", "June", "July", "August", 
 			"September", "October", "November", "December"};
 	private static final String[] AM_PM = {"AM", "PM"};
 	
